@@ -4,7 +4,7 @@ require_relative 'lib/rspec_honeycomb_formatter/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'rspec_honeycomb_formatter'
-  spec.version       = RspecHoneycombFormatter::VERSION
+  spec.version       = RSpecHoneycombFormatter::VERSION
   spec.authors       = ['David Schmitt', 'Team IAC']
   spec.email         = ['david.schmitt@puppet.com', 'https://puppetlabs.github.io/iac/']
 
@@ -24,4 +24,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
+
+  spec.add_runtime_dependency 'honeycomb-beeline'
+  spec.add_runtime_dependency 'rspec-core', '~> 3.0'
 end
