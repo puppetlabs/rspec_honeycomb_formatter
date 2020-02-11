@@ -1,4 +1,5 @@
 ---
+os: linux
 language: ruby
 cache: bundler
 rvm:
