@@ -1,6 +1,7 @@
-require "rspec_honeycomb_formatter/version"
+# frozen_string_literal: true
 
+require 'rspec_honeycomb_formatter/version'
+
+# main module containing the custom formatter
 module RspecHoneycombFormatter
-  class Error < StandardError; end
-  # Your code goes here...
 end
