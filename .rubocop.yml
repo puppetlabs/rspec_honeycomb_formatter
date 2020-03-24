@@ -140,3 +140,16 @@ Style/SymbolArray:
 # Enforce LF line endings, even when on Windows
 Layout/EndOfLine:
   EnforcedStyle: lf
+
+# rubocop 0.80 additional rules
+Style/HashEachMethods:
+  Description: unsafe transform of a pattern we rarely encounter
+  Enabled: true
+
+Style/HashTransformKeys:
+  Description: unsafe transform of a pattern we rarely encounter
+  Enabled: false
+
+Style/HashTransformValues:
+  Description: unsafe transform of a pattern we rarely encounter
+  Enabled: false
