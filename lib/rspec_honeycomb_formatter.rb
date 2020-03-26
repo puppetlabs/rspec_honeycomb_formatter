@@ -106,7 +106,7 @@ class RSpecHoneycombFormatter
   end
 
   def message(notification)
-    puts "message: #{notification}"
+    # puts "message: #{notification}"
   end
 
   private
