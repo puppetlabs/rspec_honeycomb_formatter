@@ -5,6 +5,10 @@ require 'rspec/core/formatters'
 require 'honeycomb-beeline'
 
 Honeycomb.configure do |config|
+  # override client if no configuration is provided, so that the pesky libhoney warning about lack of configuration is not shown
+  unless ENV['HONEYCOMB_WRITEKEY'] && ENV['HONEYCOMB_DATASET']
+    config.client = Libhoney::NullClient.new
+  end
 end
 unless Honeycomb.current_span
   process_span = Honeycomb.start_span(name: File.basename($PROGRAM_NAME), serialized_trace: ENV['HTTP_X_HONEYCOMB_TRACE'])
