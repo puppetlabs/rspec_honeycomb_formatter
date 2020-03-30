@@ -6,6 +6,10 @@ RSpec.describe RSpecHoneycombFormatter do # rubocop:disable RSpec/FilePath
   end
 
   # test testcases
+  # before(:each) do
+  #   skip "Don't run tests"
+  # end
+
   # it {
   #   actual = 'foo'
   #   expect(actual).to eq('bar')
