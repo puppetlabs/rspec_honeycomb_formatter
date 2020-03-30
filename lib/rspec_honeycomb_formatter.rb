@@ -6,7 +6,8 @@ require 'honeycomb-beeline'
 
 Honeycomb.configure do |config|
   # override client if no configuration is provided, so that the pesky libhoney warning about lack of configuration is not shown
-  unless ENV['HONEYCOMB_WRITEKEY'] && ENV['HONEYCOMB_DATASET']
+  # except when we set HONEYCOMB_DEBUG to true - in which case we want to see the output locally
+  unless (ENV['HONEYCOMB_WRITEKEY'] && ENV['HONEYCOMB_DATASET']) || ENV['HONEYCOMB_DEBUG'] == 'true'
     config.client = Libhoney::NullClient.new
   end
 end
