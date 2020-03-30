@@ -2,7 +2,16 @@
 
 ## [Unreleased](https://github.com/puppetlabs/rspec_honeycomb_formatter/tree/HEAD)
 
-[Full Changelog](https://github.com/puppetlabs/rspec_honeycomb_formatter/compare/v0.1.0...HEAD)
+[Full Changelog](https://github.com/puppetlabs/rspec_honeycomb_formatter/compare/v0.2.0...HEAD)
+
+**Fixed bugs:**
+
+- Fix missing message\_lines method [\#10](https://github.com/puppetlabs/rspec_honeycomb_formatter/pull/10) ([DavidS](https://github.com/DavidS))
+- \(\(IAC-658\) suppress libhoney warning and other infastructure fixes [\#9](https://github.com/puppetlabs/rspec_honeycomb_formatter/pull/9) ([DavidS](https://github.com/DavidS))
+
+## [v0.2.0](https://github.com/puppetlabs/rspec_honeycomb_formatter/tree/v0.2.0) (2020-03-24)
+
+[Full Changelog](https://github.com/puppetlabs/rspec_honeycomb_formatter/compare/v0.1.0...v0.2.0)
 
 **Implemented enhancements:**
 
