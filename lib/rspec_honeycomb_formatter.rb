@@ -88,7 +88,7 @@ class RSpecHoneycombFormatter
     @example_span.add_field('rspec.result', 'failed')
     @example_span.add_field('name', notification.example.description)
     @example_span.add_field('rspec.description', notification.example.description)
-    @example_span.add_field('rspec.message', strip_ansi(notification.message_lines.join("\n")))
+    @example_span.add_field('rspec.message', strip_ansi(notification.fully_formatted(0, RSpec::Core::Notifications::NullColorizer)))
     @example_span.add_field('rspec.backtrace', notification.formatted_backtrace.join("\n"))
     @example_span.send
   end
@@ -97,8 +97,16 @@ class RSpecHoneycombFormatter
     @example_span.add_field('rspec.result', 'pending')
     @example_span.add_field('name', notification.example.description)
     @example_span.add_field('rspec.description', notification.example.description)
-    @example_span.add_field('rspec.message', strip_ansi(notification.message_lines.join("\n")))
-    @example_span.add_field('rspec.backtrace', notification.formatted_backtrace.join("\n"))
+
+    case notification
+    when RSpec::Core::Notifications::FailedExampleNotification
+      @example_span.add_field('rspec.message', strip_ansi(notification.fully_formatted(0, RSpec::Core::Notifications::NullColorizer)))
+      @example_span.add_field('rspec.backtrace', notification.formatted_backtrace.join("\n"))
+    when RSpec::Core::Notifications::SkippedExampleNotification
+      @example_span.add_field('rspec.message', strip_ansi(notification.fully_formatted(0, RSpec::Core::Notifications::NullColorizer)))
+    else
+      @example_span.add_field('rspec.result', notification.class)
+    end
     @example_span.send
   end
 
