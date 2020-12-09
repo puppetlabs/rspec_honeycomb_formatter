@@ -17,7 +17,7 @@ unless Honeycomb.current_span
   Honeycomb.add_field_to_trace('process.full_name', $PROGRAM_NAME)
   Honeycomb.add_field_to_trace('process.args', ARGV)
   at_exit do
-    if $ERROR_INFO&.is_a?(SystemExit)
+    if $ERROR_INFO.is_a?(SystemExit)
       process_span.add_field('process.exit_code', $ERROR_INFO.status)
     elsif $ERROR_INFO
       process_span.add_field('process.exit_code', $ERROR_INFO.class.name)
