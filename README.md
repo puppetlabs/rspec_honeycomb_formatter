@@ -1,7 +1,7 @@
 # RSpecHoneycombFormatter
 
 This is a simple RSpec formatter that will send all events to the https://honeycomb.io dataset configured in the environment.
-See [honeycombio/beeline-ruby#master lib/honeycomb/configuration.rb](https://github.com/honeycombio/beeline-ruby/blob/master/lib/honeycomb/configuration.rb) for the settings you can use.
+See [honeycombio/beeline-ruby#main lib/honeycomb/configuration.rb](https://github.com/honeycombio/beeline-ruby/blob/main/lib/honeycomb/configuration.rb) for the settings you can use.
 
 ## Installation
 
