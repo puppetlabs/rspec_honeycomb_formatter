@@ -12,8 +12,8 @@ Honeycomb.configure do |config|
   end
 end
 unless Honeycomb.current_span
-  process_span = Honeycomb.start_span(name: File.basename($PROGRAM_NAME), serialized_trace: ENV['HTTP_X_HONEYCOMB_TRACE'])
-  ENV['HTTP_X_HONEYCOMB_TRACE'] = process_span.to_trace_header
+  process_span = Honeycomb.start_span(name: File.basename($PROGRAM_NAME), serialized_trace: ENV['HONEYCOMB_TRACE'])
+  ENV['HONEYCOMB_TRACE'] = process_span.to_trace_header
   Honeycomb.add_field_to_trace('process.full_name', $PROGRAM_NAME)
   Honeycomb.add_field_to_trace('process.args', ARGV)
   at_exit do
@@ -40,8 +40,8 @@ class RSpecHoneycombFormatter
   end
 
   def start(notification)
-    @start_span = Honeycomb.start_span(name: 'rspec', serialized_trace: ENV['HTTP_X_HONEYCOMB_TRACE'])
-    ENV['HTTP_X_HONEYCOMB_TRACE'] = @start_span.to_trace_header
+    @start_span = Honeycomb.start_span(name: 'rspec', serialized_trace: ENV['HONEYCOMB_TRACE'])
+    ENV['HONEYCOMB_TRACE'] = @start_span.to_trace_header
     @start_span.add_field('rspec.example_count', notification.count)
     @start_span.add_field('rspec.load_time_ms', notification.load_time * 1000)
   end
@@ -58,7 +58,7 @@ class RSpecHoneycombFormatter
 
   def example_group_started(notification)
     @group_stack.push(group_span = Honeycomb.start_span(name: notification.group.description))
-    ENV['HTTP_X_HONEYCOMB_TRACE'] = group_span.to_trace_header
+    ENV['HONEYCOMB_TRACE'] = group_span.to_trace_header
     group_span.add_field('rspec.type', 'group')
     group_span.add_field('rspec.file_path', notification.group.file_path)
     group_span.add_field('rspec.location', notification.group.location)
@@ -71,7 +71,7 @@ class RSpecHoneycombFormatter
 
   def example_started(notification)
     @example_span = Honeycomb.start_span(name: 'unknown')
-    ENV['HTTP_X_HONEYCOMB_TRACE'] = @example_span.to_trace_header
+    ENV['HONEYCOMB_TRACE'] = @example_span.to_trace_header
     @example_span.add_field('rspec.type', 'example')
     @example_span.add_field('rspec.file_path', notification.example.file_path)
     @example_span.add_field('rspec.location', notification.example.location)
