@@ -115,7 +115,9 @@ class RSpecHoneycombFormatter
   end
 
   def message(notification)
-    # puts "message: #{notification}"
+    message_span = Honeycomb.start_span(name: 'rspec.message')
+    message_span.add_field('rspec.message', notification)
+    message_span.send
   end
 
   private
